@@ -4,10 +4,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="mail.properties"/>
+    <context:property-placeholder location="mail.properties" />
 
-    <bean id="emailAuthenticator" class="service.EmailAuthenticator"/>
+    <context:annotation-config />
 
-    <bean id="mailService" class="service.MailService"/>
+    <bean id="emailAuthenticator" class="service.EmailAuthenticator" />
 
+    <bean id="mailService" class="service.MailService" />
+
+    <bean id="userDao" class="dao.UserDao" />
+
+    <bean id="userService" class="service.UserService" />
+
+    <bean id="xlsUserProvider" class="xls.XlsUserProvider" />
 </beans>

@@ -1,5 +1,6 @@
 package service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -9,16 +10,16 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class MailService {
-    @Value("mail.smtp.auth")
+    @Value("${mail.smtp.auth}")
     private String auth;
 
-    @Value("mail.smtp.starttls.enable")
+    @Value("${mail.smtp.starttls.enable}")
     private String starttlsEnable;
 
-    @Value("mail.smtp.host")
+    @Value("${mail.smtp.host}")
     private String host;
 
-    @Value("mail.smtp.port")
+    @Value("${mail.smtp.port}")
     private String port;
 
     @Autowired
