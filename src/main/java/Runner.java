@@ -4,6 +4,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.MailService;
 import service.UserService;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.util.List;
 
 public class Runner {
@@ -13,9 +15,15 @@ public class Runner {
 
 //        sendEmail(context);
 
-        UserService userService = context.getBean("userService", UserService.class);
-        List<User> allUsers = userService.findAllUsers();
-        System.out.println(allUsers);
+        try {
+            UserService userService = context.getBean("userService", UserService.class);
+            List<User> allUsers = userService.findAllUsers();
+            for (User user : allUsers) {
+                System.out.println(user);
+            }
+        } catch (IOException e) {
+            System.out.println("Wystąpił błąd: " + e);
+        }
     }
 
     private static void sendEmail(ApplicationContext context) {
