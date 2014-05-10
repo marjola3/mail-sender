@@ -1,6 +1,8 @@
 package service;
 
 
+import log.AutowiredLogger;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -10,6 +12,9 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class MailService {
+    @AutowiredLogger
+    private Logger logger;
+
     @Value("${mail.smtp.auth}")
     private String auth;
 
@@ -33,6 +38,7 @@ public class MailService {
             Message message = createMessage(from, to, subject, text, session);
             Transport.send(message);
 
+            logger.info("Wysłano email do: " + to);
             return true;
         } catch (Exception e) {
             return false;

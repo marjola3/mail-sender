@@ -6,6 +6,8 @@
 
     <import resource="gui_context.xml" />
 
+    <context:component-scan base-package="log" />
+
     <context:property-placeholder location="mail.properties" />
 
     <context:annotation-config />
@@ -19,4 +21,5 @@
     <bean id="userService" class="service.UserService" />
 
     <bean id="xlsUserProvider" class="xls.XlsUserProvider" />
+
 </beans>
