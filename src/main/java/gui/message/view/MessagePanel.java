@@ -1,4 +1,4 @@
-package view.message.view;
+package gui.message.view;
 
 import org.springframework.stereotype.Component;
 

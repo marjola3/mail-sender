@@ -1,29 +1,22 @@
-import model.User;
+import gui.accounts_table.view.AccountsFrame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.MailService;
-import service.UserService;
 
 import javax.swing.*;
-import java.io.IOException;
-import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
         ApplicationContext context =
-                new ClassPathXmlApplicationContext("context.xml");
+                new ClassPathXmlApplicationContext("base_context.xml");
 
 //        sendEmail(context);
 
-        try {
-            UserService userService = context.getBean("userService", UserService.class);
-            List<User> allUsers = userService.findAllUsers();
-            for (User user : allUsers) {
-                System.out.println(user);
-            }
-        } catch (IOException e) {
-            System.out.println("Wystąpił błąd: " + e);
-        }
+        AccountsFrame frame = context.getBean("accountsFrame", AccountsFrame.class);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+
     }
 
     private static void sendEmail(ApplicationContext context) {
