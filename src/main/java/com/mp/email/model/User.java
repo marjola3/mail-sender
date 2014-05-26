@@ -1,4 +1,4 @@
-package model;
+package com.mp.email.model;
 
 
 public class User {

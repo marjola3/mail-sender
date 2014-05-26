@@ -1,8 +1,8 @@
-package service;
+package com.mp.email.service;
 
-import dao.UserDao;
-import log.AutowiredLogger;
-import model.User;
+import com.mp.email.dao.UserDao;
+import com.mp.email.log.AutowiredLogger;
+import com.mp.email.model.User;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 

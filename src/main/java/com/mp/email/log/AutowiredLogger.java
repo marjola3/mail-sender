@@ -1,4 +1,4 @@
-package log;
+package com.mp.email.log;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

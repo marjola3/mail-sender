@@ -1,7 +1,9 @@
-import gui.accounts_table.view.AccountsFrame;
+package com.mp.email;
+
+import com.mp.email.gui.accounts_table.view.AccountsFrame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import service.MailService;
+import com.mp.email.service.MailService;
 
 import javax.swing.*;
 
