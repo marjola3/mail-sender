@@ -1,8 +1,7 @@
-package xls;
+package com.mp.email.xls;
 
 
-import model.User;
-import org.apache.poi.ss.usermodel.Header;
+import com.mp.email.model.User;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -15,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static xls.UserColumnNames.*;
+import static com.mp.email.xls.UserColumnNames.*;
 
 public class XlsUserProvider {
     @Value("${emails.excel.fileName}")
@@ -60,6 +59,8 @@ public class XlsUserProvider {
             int result = fileChooser.showOpenDialog(null);
             if (result == JFileChooser.APPROVE_OPTION) {
                 file = fileChooser.getSelectedFile();
+            } else {
+                System.exit(0);
             }
         }
 

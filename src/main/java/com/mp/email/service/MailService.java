@@ -1,7 +1,7 @@
-package service;
+package com.mp.email.service;
 
 
-import log.AutowiredLogger;
+import com.mp.email.log.AutowiredLogger;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

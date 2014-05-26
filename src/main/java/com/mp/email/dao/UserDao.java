@@ -1,9 +1,9 @@
-package dao;
+package com.mp.email.dao;
 
 
-import model.User;
+import com.mp.email.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import xls.XlsUserProvider;
+import com.mp.email.xls.XlsUserProvider;
 
 import java.io.IOException;
 import java.util.List;

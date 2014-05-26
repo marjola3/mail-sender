@@ -1,4 +1,4 @@
-package gui.message.view;
+package com.mp.email.gui.message.view;
 
 import org.springframework.stereotype.Component;
 

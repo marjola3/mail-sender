@@ -2,25 +2,30 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
        default-init-method="init">
 
     <import resource="gui_context.xml" />
 
-    <context:component-scan base-package="log" />
+    <context:component-scan base-package="com.mp.email.log" />
 
     <context:property-placeholder location="mail.properties" />
 
     <context:annotation-config />
 
-    <bean id="emailAuthenticator" class="service.EmailAuthenticator" />
+    <aop:aspectj-autoproxy />
 
-    <bean id="mailService" class="service.MailService" />
+    <bean id="emailAuthenticator" class="com.mp.email.service.EmailAuthenticator" />
 
-    <bean id="userDao" class="dao.UserDao" />
+    <bean id="mailService" class="com.mp.email.service.MailService" />
 
-    <bean id="userService" class="service.UserService" />
+    <bean id="userDao" class="com.mp.email.dao.UserDao" />
 
-    <bean id="xlsUserProvider" class="xls.XlsUserProvider" />
+    <bean id="userService" class="com.mp.email.service.UserService" />
+
+    <bean id="xlsUserProvider" class="com.mp.email.xls.XlsUserProvider" />
+
+    <bean id="loggingAspect" class="com.mp.email.aspect.LoggingAspect" />
 
 </beans>
