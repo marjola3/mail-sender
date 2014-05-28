@@ -5,6 +5,7 @@ import com.mp.email.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,12 @@ public class AccountsTableModel extends AbstractTableModel{
     @Value("${accountsFrame.column.email}")
     private String email;
 
+    @Value("${accountsFrame.column.isSending}")
+    private String isSending;
+
     public void init(){
         users = new ArrayList<User>();
-        columnNames = new String[] {name, surname, email};
+        columnNames = new String[] {name, surname, email, isSending};
     }
 
     public void addUser(User user) {
@@ -62,6 +66,8 @@ public class AccountsTableModel extends AbstractTableModel{
                 return users.get(rowIndex).getSurname();
             case 2:
                 return users.get(rowIndex).getEmail();
+            case 3:
+                return true;
             default:
                 return "";
         }

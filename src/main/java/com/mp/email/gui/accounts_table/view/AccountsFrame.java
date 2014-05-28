@@ -14,7 +14,10 @@ public class AccountsFrame extends JFrame {
     private String frameTitle;
 
     @Autowired
-    private AccountsPanel accountsPanel;
+    private TablePanel accountsPanel;
+
+    @Autowired
+    private ButtonPanel buttonPanel;
 
     public void init() {
         setSize(500, 500);
@@ -26,5 +29,6 @@ public class AccountsFrame extends JFrame {
 
     private void initializeComponent() {
         add(accountsPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
     }
 }
