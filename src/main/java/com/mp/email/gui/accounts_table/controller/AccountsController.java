@@ -3,6 +3,7 @@ package com.mp.email.gui.accounts_table.controller;
 import com.mp.email.dao.UserDao;
 import com.mp.email.gui.accounts_table.model.AccountsTableModel;
 import com.mp.email.gui.accounts_table.view.ButtonPanel;
+import com.mp.email.gui.accounts_table.view.TablePanel;
 import com.mp.email.log.AutowiredLogger;
 import com.mp.email.model.User;
 import org.slf4j.Logger;
@@ -34,6 +35,9 @@ public class AccountsController {
     @Autowired
     private ButtonPanel buttonPanel;
 
+    @Autowired
+    private TablePanel tablePanel;
+
     public void init(){
         findUsersAndFillTable();
 
@@ -50,7 +54,8 @@ public class AccountsController {
     private void findUsersAndFillTable() {
         try {
             List<User> allUsers = userDao.findAllUsers();
-            accountsTableModel.setUsers(allUsers);
+            AccountsTableModel model = tablePanel.getAccountsTableModel();
+            model.setUsers(allUsers);
         } catch (IOException e) {
             logger.error("Błąd podczas pobierania użytkowników", e);
         }
@@ -73,9 +78,20 @@ public class AccountsController {
     class RemoveBtnListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            logger.info("remove");
+            JTable jTable = tablePanel.getTable();
+            AccountsTableModel model = tablePanel.getAccountsTableModel();
+
+            int[] selectedRows = jTable.getSelectedRows();
+
+            if(selectedRows.length > 0) {
+                model.remove(selectedRows);
+            } else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Nie zaznaczono wiersza",
+                        "Info",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
-
-
 }

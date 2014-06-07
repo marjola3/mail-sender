@@ -20,11 +20,15 @@ public class AccountsFrame extends JFrame {
     private ButtonPanel buttonPanel;
 
     public void init() {
-        setSize(500, 500);
-        setLocationRelativeTo(null);
-
-        setTitle(frameTitle);
+        setUpFrame();
         initializeComponent();
+    }
+
+    private void setUpFrame() {
+        setSize(600, 510);
+        setLocationRelativeTo(null);
+        setTitle(frameTitle);
+        setResizable(false);
     }
 
     private void initializeComponent() {

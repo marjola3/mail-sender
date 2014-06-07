@@ -16,6 +16,9 @@ public class AccountsTableModel extends AbstractTableModel{
 
     private String[] columnNames;
 
+    @Value("${accountsFrame.column.id}")
+    private String id;
+
     @Value("${accountsFrame.column.name}")
     private String name;
 
@@ -30,12 +33,27 @@ public class AccountsTableModel extends AbstractTableModel{
 
     public void init(){
         users = new ArrayList<User>();
-        columnNames = new String[] {name, surname, email, isSending};
+        columnNames = new String[] {id, name, surname, email, isSending};
     }
 
     public void addUser(User user) {
         users.add(user);
         fireTableDataChanged();
+    }
+
+    public boolean remove(int[] indexes) {
+        List<User> tempUsers = new ArrayList<User>();
+
+        for (int index : indexes) {
+            if(index >= 0 && index < users.size()) {
+                tempUsers.add(users.get(index));
+            }
+        }
+
+        boolean result = users.removeAll(tempUsers);
+        fireTableDataChanged();
+        //
+        return result;
     }
 
     public void setUsers(List<User> users) {
@@ -61,12 +79,14 @@ public class AccountsTableModel extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return users.get(rowIndex).getName();
+                return rowIndex + 1;
             case 1:
-                return users.get(rowIndex).getSurname();
+                return users.get(rowIndex).getName();
             case 2:
-                return users.get(rowIndex).getEmail();
+                return users.get(rowIndex).getSurname();
             case 3:
+                return users.get(rowIndex).getEmail();
+            case 4:
                 return true;
             default:
                 return "";
