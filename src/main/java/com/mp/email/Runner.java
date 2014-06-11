@@ -15,10 +15,8 @@ public class Runner {
 //        sendEmail(context);
 
         AccountsFrame frame = context.getBean("accountsFrame", AccountsFrame.class);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.setVisible(true);
-
-
     }
 
     private static void sendEmail(ApplicationContext context) {

@@ -66,4 +66,8 @@ public class XlsUserProvider {
 
         return file;
     }
+
+    public void saveAllUser(List<User> users) {
+        System.out.println("Zapisuję " + users);
+    }
 }

@@ -93,4 +93,8 @@ public class AccountsTableModel extends AbstractTableModel{
         }
 
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
 }
