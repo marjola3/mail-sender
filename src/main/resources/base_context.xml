@@ -20,7 +20,7 @@
 
     <bean id="mailService" class="com.mp.email.service.MailService" />
 
-    <bean id="userDao" class="com.mp.email.dao.UserDao" />
+    <bean id="userDao" class="com.mp.email.dao.UserDao"/>
 
     <bean id="userService" class="com.mp.email.service.UserService" />
 
