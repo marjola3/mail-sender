@@ -16,7 +16,7 @@ public class UserDao implements IUserDao {
         return xlsUserProvider.getAllUsers();
     }
 
-    public void saveAllUsers(List<User> users) {
+    public void saveAllUsers(List<User> users) throws Exception {
         xlsUserProvider.saveAllUser(users);
     }
 }

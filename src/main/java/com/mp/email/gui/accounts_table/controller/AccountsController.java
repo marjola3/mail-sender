@@ -1,11 +1,11 @@
 package com.mp.email.gui.accounts_table.controller;
 
 import com.mp.email.dao.IUserDao;
-import com.mp.email.dao.UserDao;
 import com.mp.email.gui.accounts_table.model.AccountsTableModel;
 import com.mp.email.gui.accounts_table.view.AccountsFrame;
 import com.mp.email.gui.accounts_table.view.ButtonPanel;
 import com.mp.email.gui.accounts_table.view.TablePanel;
+import com.mp.email.gui.add_user.view.AddUserDialog;
 import com.mp.email.log.AutowiredLogger;
 import com.mp.email.model.User;
 import org.slf4j.Logger;
@@ -45,11 +45,17 @@ public class AccountsController {
     @Autowired
     private AccountsFrame accountsFrame;
 
+    @Autowired
+    private AddUserDialog addUserDialog;
+
     @Value("${accountsControler.removePaneMessage}")
     private String removePaneMessage;
 
     @Value("${accountsControler.removePaneTitle}")
-    private String remevePaneTitle;
+    private String removePaneTitle;
+
+    @Value("${accountsControler.saveAndClosePaneWindow}")
+    private String savePaneWindow;
 
     public void init(){
         findUsersAndFillTable();
@@ -88,7 +94,7 @@ public class AccountsController {
     class AddBtnListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            logger.info("add");
+            addUserDialog.setVisible(true);
         }
     }
 
@@ -106,7 +112,7 @@ public class AccountsController {
                 JOptionPane.showMessageDialog(
                         null,
                         removePaneMessage,
-                        remevePaneTitle,
+                        removePaneTitle,
                         JOptionPane.INFORMATION_MESSAGE);
             }
         }
@@ -115,10 +121,14 @@ public class AccountsController {
     class AccountsWindowListener extends WindowAdapter {
         @Override
         public void windowClosing(WindowEvent e) {
+            UIManager.put("OptionPane.yesButtonText", "Tak");
+            UIManager.put("OptionPane.noButtonText", "Nie");
+            UIManager.put("OptionPane.cancelButtonText", "Anuluj");
+
             int result = JOptionPane.showConfirmDialog(
                     null,
-                    "Czy chcesz?",
-                    "Informacja",
+                    savePaneWindow,
+                    removePaneTitle,
                     JOptionPane.YES_NO_CANCEL_OPTION,
                     JOptionPane.INFORMATION_MESSAGE);
 
@@ -132,7 +142,11 @@ public class AccountsController {
     }
 
     private void saveAllUsers() {
-        AccountsTableModel model = tablePanel.getAccountsTableModel();
-        userDao.saveAllUsers(model.getUsers());
+        try {
+            AccountsTableModel model = tablePanel.getAccountsTableModel();
+            userDao.saveAllUsers(model.getUsers());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Nie można zapisać użytkowników");
+        }
     }
 }

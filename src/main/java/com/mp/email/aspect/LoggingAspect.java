@@ -18,7 +18,7 @@ public class LoggingAspect {
 
     @Before("beforeAnyMethod()")
     public void logMethodCall(JoinPoint joinPoint) {
-        logger.info("Wywołanie metody: " + joinPoint.getSignature().getName());
+        logger.info("Method call: " + joinPoint.getSignature().getName());
     }
 
     @Pointcut("execution(* com.mp.email..findAll*(..))")

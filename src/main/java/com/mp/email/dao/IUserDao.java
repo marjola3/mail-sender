@@ -12,5 +12,5 @@ public interface IUserDao {
 
     public List<User> findAllUsers() throws IOException;
 
-    public void saveAllUsers(List<User> users);
+    public void saveAllUsers(List<User> users) throws Exception;
 }
