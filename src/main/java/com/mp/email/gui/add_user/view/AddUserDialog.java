@@ -28,7 +28,7 @@ public class AddUserDialog extends JDialog {
     }
 
     private void setUpFrame() {
-        setSize(200, 170);
+        setSize(230, 170);
         setLocationRelativeTo(null);
         setTitle(frameTitle);
         setResizable(false);
