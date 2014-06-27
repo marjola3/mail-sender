@@ -25,6 +25,8 @@ public class AccountsFrame extends JFrame {
     }
 
     private void setUpFrame() {
+
+
         setSize(600, 510);
         setLocationRelativeTo(null);
         setTitle(frameTitle);

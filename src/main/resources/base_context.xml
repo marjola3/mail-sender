@@ -2,30 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
-       default-init-method="init" default-destroy-method="destroy">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd"
+           default-init-method="init" default-destroy-method="destroy">
 
-    <import resource="gui_context.xml" />
+    <import resource="gui_context.xml"/>
 
-    <context:component-scan base-package="com.mp.email.log" />
+    <context:component-scan base-package="com.mp.email.log"/>
 
-    <context:property-placeholder location="mail.properties" />
+    <context:property-placeholder location="mail.properties"/>
 
-    <context:annotation-config />
+    <context:annotation-config/>
 
-    <aop:aspectj-autoproxy />
+    <bean id="emailAuthenticator" class="com.mp.email.service.EmailAuthenticator"/>
 
-    <bean id="emailAuthenticator" class="com.mp.email.service.EmailAuthenticator" />
-
-    <bean id="mailService" class="com.mp.email.service.MailService" />
+    <bean id="mailService" class="com.mp.email.service.MailService"/>
 
     <bean id="userDao" class="com.mp.email.dao.UserDao"/>
 
-    <bean id="userService" class="com.mp.email.service.UserService" />
+    <bean id="userService" class="com.mp.email.service.UserService"/>
 
-    <bean id="xlsUserProvider" class="com.mp.email.xls.XlsUserProvider" />
-
-    <bean id="loggingAspect" class="com.mp.email.aspect.LoggingAspect" />
+    <bean id="xlsUserProvider" class="com.mp.email.xls.XlsUserProvider"/>
 
 </beans>
